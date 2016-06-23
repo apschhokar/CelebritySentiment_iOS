@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2D16F0251D1A6D26001C3439 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16F0241D1A6D26001C3439 /* Groups.swift */; };
 		2D16F0261D1A6D26001C3439 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16F0241D1A6D26001C3439 /* Groups.swift */; };
+		2D16F0281D1B96A8001C3439 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16F0271D1B96A8001C3439 /* GroupsTableViewController.swift */; };
+		2D16F0291D1B96A8001C3439 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16F0271D1B96A8001C3439 /* GroupsTableViewController.swift */; };
+		2D16F02E1D1BBB3B001C3439 /* GroupViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16F02D1D1BBB3B001C3439 /* GroupViewTableCell.swift */; };
+		2D16F02F1D1BBB3B001C3439 /* GroupViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16F02D1D1BBB3B001C3439 /* GroupViewTableCell.swift */; };
 		2D5924051D161BE2009444BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5924041D161BE2009444BB /* AppDelegate.swift */; };
 		2D5924071D161BE2009444BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5924061D161BE2009444BB /* ViewController.swift */; };
 		2D59240A1D161BE2009444BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5924081D161BE2009444BB /* Main.storyboard */; };
@@ -38,9 +42,11 @@
 
 /* Begin PBXFileReference section */
 		2D16F0241D1A6D26001C3439 /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Groups.swift; path = ../Groups.swift; sourceTree = "<group>"; };
+		2D16F0271D1B96A8001C3439 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsTableViewController.swift; path = CelebritySentiment/GroupsTableViewController.swift; sourceTree = "<group>"; };
+		2D16F02D1D1BBB3B001C3439 /* GroupViewTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewTableCell.swift; sourceTree = "<group>"; };
 		2D5924011D161BE2009444BB /* CelebritySentiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CelebritySentiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5924041D161BE2009444BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2D5924061D161BE2009444BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2D5924061D161BE2009444BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = CelebritySentiment/ViewController.swift; sourceTree = "<group>"; };
 		2D5924091D161BE2009444BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D59240C1D161BE2009444BB /* CelebritySentiment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CelebritySentiment.xcdatamodel; sourceTree = "<group>"; };
 		2D59240E1D161BE2009444BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,9 +85,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D16F02B1D1B96D4001C3439 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2D5924061D161BE2009444BB /* ViewController.swift */,
+				2D16F0271D1B96A8001C3439 /* GroupsTableViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		2D16F02C1D1BBB0D001C3439 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2D16F02D1D1BBB3B001C3439 /* GroupViewTableCell.swift */,
+			);
+			name = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
 		2D5923F81D161BE2009444BB = {
 			isa = PBXGroup;
 			children = (
+				2D16F02C1D1BBB0D001C3439 /* CustomTableViewCell */,
+				2D16F02B1D1B96D4001C3439 /* ViewController */,
 				2D5924031D161BE2009444BB /* CelebritySentiment */,
 				2D59241B1D161BE3009444BB /* CelebritySentimentTests */,
 				2D5924261D161BE3009444BB /* CelebritySentimentUITests */,
@@ -104,7 +129,6 @@
 			children = (
 				2D16F0241D1A6D26001C3439 /* Groups.swift */,
 				2D5924041D161BE2009444BB /* AppDelegate.swift */,
-				2D5924061D161BE2009444BB /* ViewController.swift */,
 				2D5924081D161BE2009444BB /* Main.storyboard */,
 				2D59240E1D161BE2009444BB /* Assets.xcassets */,
 				2D5924101D161BE2009444BB /* LaunchScreen.storyboard */,
@@ -264,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D5924071D161BE2009444BB /* ViewController.swift in Sources */,
+				2D16F02E1D1BBB3B001C3439 /* GroupViewTableCell.swift in Sources */,
+				2D16F0281D1B96A8001C3439 /* GroupsTableViewController.swift in Sources */,
 				2D5924051D161BE2009444BB /* AppDelegate.swift in Sources */,
 				2D59240D1D161BE2009444BB /* CelebritySentiment.xcdatamodeld in Sources */,
 				2D16F0251D1A6D26001C3439 /* Groups.swift in Sources */,
@@ -276,6 +302,8 @@
 			files = (
 				2D59241D1D161BE3009444BB /* CelebritySentimentTests.swift in Sources */,
 				2D16F0261D1A6D26001C3439 /* Groups.swift in Sources */,
+				2D16F0291D1B96A8001C3439 /* GroupsTableViewController.swift in Sources */,
+				2D16F02F1D1BBB3B001C3439 /* GroupViewTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
