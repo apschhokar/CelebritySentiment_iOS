@@ -9,5 +9,8 @@
 import UIKit
 
 class GroupViewTableCell: UITableViewCell {
+    
+    var GroupName: UILabel?
+    var GroupDesc: UILabel?
 
 }

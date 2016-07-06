@@ -8,10 +8,11 @@
 
 import Foundation
 
-class groups : NSObject{
+class Groups : NSObject{
 
     var twitterName:String?
     var groupName:String?
+    var groupDesc:String?
     var numberOfCelebrities:Int = 0
 
 

@@ -8,8 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class EnterGroupViewController: UIViewController {
 
+    @IBOutlet var groupNameTextField: UITextField!
+    
+    @IBOutlet var groupDescTextField: UITextField!
+    
+    var groupInfo : Groups  = Groups()
+    
+    @IBAction func onProceedBtnPressed(sender: AnyObject) {
+        groupInfo.groupName = groupNameTextField.text
+        groupInfo.groupDesc = groupDescTextField.text
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -18,6 +31,15 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue == "showGroup"{
+            let showGroupSegue : GroupsTableViewController  = segue.destinationViewController  as! GroupsTableViewController
+            showGroupSegue.group = groupInfo
+            
+        }
     }
 
 
