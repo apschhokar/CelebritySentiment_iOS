@@ -21,6 +21,11 @@
 		2D5924121D161BE2009444BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5924101D161BE2009444BB /* LaunchScreen.storyboard */; };
 		2D59241D1D161BE3009444BB /* CelebritySentimentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D59241C1D161BE3009444BB /* CelebritySentimentTests.swift */; };
 		2D5924281D161BE3009444BB /* CelebritySentimentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5924271D161BE3009444BB /* CelebritySentimentUITests.swift */; };
+		2DA998371D2E323B00C2D289 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA998361D2E323B00C2D289 /* GroupCell.xib */; };
+		2DA998391D2E39E200C2D289 /* Ajay.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DA998381D2E39E200C2D289 /* Ajay.jpg */; };
+		2DA998411D2E3DA400C2D289 /* CelebrityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA998401D2E3DA400C2D289 /* CelebrityCell.xib */; };
+		2DA998431D2E3DD600C2D289 /* CelebrityCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA998421D2E3DD600C2D289 /* CelebrityCollectionViewController.swift */; };
+		2DA998451D2E3DFB00C2D289 /* CelebrityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA998441D2E3DFB00C2D289 /* CelebrityCollectionViewCell.swift */; };
 		2DFDF56C1D2CAEC600A1F015 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFDF56B1D2CAEC600A1F015 /* Login.swift */; };
 		2DFDF5721D2CB5E300A1F015 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFDF56E1D2CB5E300A1F015 /* Fabric.framework */; };
 		2DFDF5731D2CB5E300A1F015 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFDF56E1D2CB5E300A1F015 /* Fabric.framework */; };
@@ -71,6 +76,11 @@
 		2D5924231D161BE3009444BB /* CelebritySentimentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CelebritySentimentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5924271D161BE3009444BB /* CelebritySentimentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebritySentimentUITests.swift; sourceTree = "<group>"; };
 		2D5924291D161BE3009444BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DA998361D2E323B00C2D289 /* GroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
+		2DA998381D2E39E200C2D289 /* Ajay.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ajay.jpg; sourceTree = "<group>"; };
+		2DA998401D2E3DA400C2D289 /* CelebrityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CelebrityCell.xib; sourceTree = "<group>"; };
+		2DA998421D2E3DD600C2D289 /* CelebrityCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelebrityCollectionViewController.swift; sourceTree = "<group>"; };
+		2DA998441D2E3DFB00C2D289 /* CelebrityCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelebrityCollectionViewCell.swift; sourceTree = "<group>"; };
 		2DFDF56B1D2CAEC600A1F015 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		2DFDF56E1D2CB5E300A1F015 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		2DFDF56F1D2CB5E300A1F015 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 		2D16F02B1D1B96D4001C3439 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2DA998421D2E3DD600C2D289 /* CelebrityCollectionViewController.swift */,
 				2D5924061D161BE2009444BB /* ViewController.swift */,
 				2D16F0271D1B96A8001C3439 /* GroupsTableViewController.swift */,
 				2DFDF56B1D2CAEC600A1F015 /* Login.swift */,
@@ -126,6 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				2D16F02D1D1BBB3B001C3439 /* GroupViewTableCell.swift */,
+				2DA998361D2E323B00C2D289 /* GroupCell.xib */,
+				2DA998401D2E3DA400C2D289 /* CelebrityCell.xib */,
+				2DA998441D2E3DFB00C2D289 /* CelebrityCollectionViewCell.swift */,
 			);
 			name = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -133,6 +147,7 @@
 		2D5923F81D161BE2009444BB = {
 			isa = PBXGroup;
 			children = (
+				2DA998381D2E39E200C2D289 /* Ajay.jpg */,
 				2D16F02C1D1BBB0D001C3439 /* CustomTableViewCell */,
 				2D16F02B1D1B96D4001C3439 /* ViewController */,
 				2D5924031D161BE2009444BB /* CelebritySentiment */,
@@ -296,7 +311,10 @@
 				2DFDF5781D2CB5E300A1F015 /* TwitterKitResources.bundle in Resources */,
 				2D5924121D161BE2009444BB /* LaunchScreen.storyboard in Resources */,
 				2D59240F1D161BE2009444BB /* Assets.xcassets in Resources */,
+				2DA998371D2E323B00C2D289 /* GroupCell.xib in Resources */,
 				2D59240A1D161BE2009444BB /* Main.storyboard in Resources */,
+				2DA998411D2E3DA400C2D289 /* CelebrityCell.xib in Resources */,
+				2DA998391D2E39E200C2D289 /* Ajay.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +357,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DA998431D2E3DD600C2D289 /* CelebrityCollectionViewController.swift in Sources */,
+				2DA998451D2E3DFB00C2D289 /* CelebrityCollectionViewCell.swift in Sources */,
 				2DFDF56C1D2CAEC600A1F015 /* Login.swift in Sources */,
 				2D5924071D161BE2009444BB /* ViewController.swift in Sources */,
 				2D16F02E1D1BBB3B001C3439 /* GroupViewTableCell.swift in Sources */,

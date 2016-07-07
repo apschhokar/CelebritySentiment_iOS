@@ -20,7 +20,20 @@ class Login: UIViewController {
                     message: "User \(unwrappedSession.userName) has logged in",
                     preferredStyle: UIAlertControllerStyle.Alert
                 )
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:
+                    { action in
+                        switch action.style{
+                        case .Default:
+                            self.performSegueWithIdentifier("showGroup", sender: self)
+                            print("default")
+                            
+                        case .Cancel:
+                            print("cancel")
+                            
+                        case .Destructive:
+                            print("destructive")
+                        }
+                }))
                 self.presentViewController(alert, animated: true, completion: nil)
             } else {
                 NSLog("Login error: %@", error!.localizedDescription);
@@ -34,25 +47,12 @@ class Login: UIViewController {
     
 
     override func viewWillAppear(animated: Bool) {
+    
         
-        // Swift
-        Twitter.sharedInstance().logInWithCompletion { session, error in
-            if (session != nil) {
-                print("signed in as \(session!.userName)");
-                print("bro")
-                self.performSegueWithIdentifier("showGroup", sender: self)
-                
-            } else {
-                print("error: \(error!.localizedDescription)");
-            }
-        }
         
     }
     
     
-    override func performSegueWithIdentifier(identifier: String, sender: AnyObject?) {
-        
-    }
     
     
 }

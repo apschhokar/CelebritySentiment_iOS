@@ -17,8 +17,7 @@ class EnterGroupViewController: UIViewController {
     var groupInfo : Groups  = Groups()
     
     @IBAction func onProceedBtnPressed(sender: AnyObject) {
-        groupInfo.groupName = groupNameTextField.text
-        groupInfo.groupDesc = groupDescTextField.text
+        
     }
     
     
@@ -35,9 +34,8 @@ class EnterGroupViewController: UIViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue == "showGroup"{
+        if segue == "listGroup"{
             let showGroupSegue : GroupsTableViewController  = segue.destinationViewController  as! GroupsTableViewController
-            showGroupSegue.group = groupInfo
             
         }
     }

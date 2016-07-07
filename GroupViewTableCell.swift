@@ -10,7 +10,8 @@ import UIKit
 
 class GroupViewTableCell: UITableViewCell {
     
-    var GroupName: UILabel?
-    var GroupDesc: UILabel?
+    @IBOutlet weak var groupName: UILabel!
+    
+    @IBOutlet weak var groupDescription: UILabel!
 
 }

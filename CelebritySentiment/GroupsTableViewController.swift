@@ -8,10 +8,10 @@
 
 import UIKit
 
+
 class GroupsTableViewController: UIViewController  , UITableViewDelegate , UITableViewDataSource{
     
 
-   var group :Groups = Groups()
     
     @IBOutlet weak var groupTableView: UITableView!
     
@@ -20,6 +20,11 @@ class GroupsTableViewController: UIViewController  , UITableViewDelegate , UITab
 
         groupTableView.delegate = self
         groupTableView.dataSource = self
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        let nib = UINib(nibName: "GroupCell", bundle: nil)
+        groupTableView.registerNib(nib, forCellReuseIdentifier: "groupCell")
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -33,17 +38,22 @@ class GroupsTableViewController: UIViewController  , UITableViewDelegate , UITab
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
 
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+       return 100
+    }
     
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        print("cell for row index path")
-
-        var temo :UITableViewCell = UITableViewCell()
+        print("cell for row index path" )
+        let cell : GroupViewTableCell = tableView.dequeueReusableCellWithIdentifier("groupCell") as! GroupViewTableCell!
         
-        return temo
+        cell.groupName.text = "NBA"
+        cell.groupDescription.text = "All About NBA"
+        
+        return cell
     }
     
     
