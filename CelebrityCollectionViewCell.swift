@@ -10,4 +10,9 @@ import UIKit
 
 class CelebrityCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var cellImageView: UIImageView!
+    
+    @IBOutlet weak var tweetsProgressBar: UIProgressView!
+    
+    @IBOutlet weak var tweetLabel: UILabel!
 }

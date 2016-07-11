@@ -28,7 +28,9 @@ class GroupsTableViewController: UIViewController  , UITableViewDelegate , UITab
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        //self.performSegueWithIdentifier("ShowCelebrity", sender: nil)
+        let mapViewControllerObj = self.storyboard?.instantiateViewControllerWithIdentifier("CelebrityCollectionViewController") as? CelebrityCollectionViewController
+        self.navigationController?.pushViewController(mapViewControllerObj!, animated: true)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int

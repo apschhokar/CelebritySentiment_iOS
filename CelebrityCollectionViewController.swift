@@ -7,88 +7,239 @@
 //
 
 import UIKit
+import TwitterKit
+import Alamofire
 
 private let reuseIdentifier = "Cell"
 
-class CelebrityCollectionViewController: UICollectionViewController {
+class CelebrityCollectionViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource   {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    let player1 = "Stephen Curry"
+    let player2 = "Lebron James"
+    let player3 = "Draymond Green"
+
+    let userSearch =   "https://api.twitter.com/1.1/users/search.json"
+    let twitterStreamAPI = "https://stream.twitter.com/1.1/statuses/sample.json"
+    
+    var values = [String]()
+    var celebrityImageUrl = Dictionary<String, String>()
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        values.append(player1)
+        values.append(player2)
+        values.append(player3)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+    
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
+    
+    
 
+    //downlaod the tweets of entities saved in core data
+    override func viewDidAppear(animated: Bool) {
+        
+       // getURLOfImagesFromWiki("Stephen+Curry")
+        
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
-
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
     
-        // Configure the cell
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(values.count)
+        return values.count
+    }
+
+
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CelebrityCell", forIndexPath: indexPath) as! CelebrityCollectionViewCell
+        
+        cell.tweetLabel.text = values[indexPath.row]
+        
+       
+        var celebrityURL = celebrityImageUrl[values[indexPath.row]]
+        
+        //get imagURl if there is no url retreive as of now
+        if(celebrityURL == nil){
+            getImageURL(values[indexPath.row])
+        }
+        
+        
+        print("ok lets enter \(celebrityImageUrl)")
+        
+         if(celebrityURL  != nil){
+            print("enetred")
+            if let url = NSURL(string: celebrityURL!) {
+                if let data = NSData(contentsOfURL: url) {
+                    cell.cellImageView.image = UIImage(data: data)
+                }        
+            }
+        }
+        
         return cell
-    }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
     }
-    */
+    
+    
+    
+
+    //get image url of celebrity image
+    func getImageURL(celebrity :String){
+    
+        let client = TWTRAPIClient()
+        let statusesShowEndpoint = userSearch
+        let params = ["q": celebrity,
+                      "page" : "1",
+                      "count" : "1"
+                      ]
+        var clientError : NSError?
+        
+        let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+         client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                print("json: \(json)")
+                
+                let profileImageURL: String? = json[0].valueForKey("profile_image_url_https") as? String
+
+                //modify the image url to get originial size image
+                let imageURL =  self.cropTheUrlOfImage(profileImageURL!)
+                
+                self.celebrityImageUrl[celebrity] = imageURL
+                
+                //refresh collectionView after receiving the imageURL
+                self.collectionView.reloadData()
+            
+            } catch let jsonError as NSError {
+                print("json error: \(jsonError.localizedDescription)")
+            }
+        }
+    }
+    
+    
+    
+    func cropTheUrlOfImage(imageURL : String) -> String{
+    
+        var fullNameArr = imageURL.componentsSeparatedByString("/") // ["ab", "cd"]
+        let lastPart = fullNameArr[fullNameArr.count-1]
+        var arrayImageLastPart = lastPart.componentsSeparatedByString("_")
+        let stringImageLastPart = arrayImageLastPart[0]
+        let lastImage = stringImageLastPart + ".jpg"
+        
+        var fullimageURl = ""
+        
+        for(var i = 0;i<fullNameArr.count-1;i+=1) {
+            var tempString = fullNameArr[i]
+            fullimageURl += tempString + "/"
+        }
+        
+        fullimageURl += lastImage
+        
+       // print(fullimageURl)
+
+        return fullimageURl
+    }
+    
+    
+    
+    
+    func getURLOfImagesFromWiki(celebrityName : String) -> String {
+        
+        let parameters = [
+            "action": "query",
+            "prop": "images",
+            "format": "json",
+            "formatversion": "2",
+            "titles": "Shahrukh Khan",
+        ]
+        
+       // var resultDictionary = Dictionary<String, String>();
+        
+        
+        Alamofire.request(.GET, "https://en.wikipedia.org/w/api.php", parameters: parameters)
+            .responseJSON { response in
+                print(response.request)  // original URL request
+                // print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value  as? [String: AnyObject] {
+                    print("JSON: \(JSON)")
+                    
+                    
+                    
+                }
+        }
+        
+        return ""
+    }
+    
+    
+    
+    func getTweetsStream(celebrity :String){
+
+        let client = TWTRAPIClient()
+        let statusesShowEndpoint = twitterStreamAPI
+        let params = ["q": celebrity,
+                      "page" : "1",
+                      "count" : "1"
+        ]
+        var clientError : NSError?
+        
+        let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                print("json: \(json)")
+                
+                let profileImageURL: String? = json[0].valueForKey("profile_image_url_https") as? String
+                
+                //modify the image url to get originial size image
+                let imageURL =  self.cropTheUrlOfImage(profileImageURL!)
+                
+                self.celebrityImageUrl[celebrity] = imageURL
+                
+                //refresh collectionView after receiving the imageURL
+                self.collectionView.reloadData()
+                
+            } catch let jsonError as NSError {
+                print("json error: \(jsonError.localizedDescription)")
+            }
+        }
+
+    
+   
+    }
+    
+
+    
+    
+    
+    
 
 }
