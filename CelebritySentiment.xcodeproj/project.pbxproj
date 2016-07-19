@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1846E70E1BC3B7C220A64D4A /* Pods_CelebritySentimentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39E60D67A49B90CF953BB1F1 /* Pods_CelebritySentimentUITests.framework */; };
 		2D16F0251D1A6D26001C3439 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16F0241D1A6D26001C3439 /* Groups.swift */; };
 		2D16F0261D1A6D26001C3439 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16F0241D1A6D26001C3439 /* Groups.swift */; };
 		2D16F0281D1B96A8001C3439 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D16F0271D1B96A8001C3439 /* GroupsTableViewController.swift */; };
@@ -40,6 +41,7 @@
 		2DFDF57B1D2CB5E300A1F015 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFDF5711D2CB5E300A1F015 /* TwitterCore.framework */; };
 		2DFDF57C1D2CB5E300A1F015 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFDF5711D2CB5E300A1F015 /* TwitterCore.framework */; };
 		2DFDF57D1D2CB5E300A1F015 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFDF5711D2CB5E300A1F015 /* TwitterCore.framework */; };
+		5DFC3F0A025911B56F7A2EB8 /* Pods_CelebritySentimentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1517847E6A67DA59C93676 /* Pods_CelebritySentimentTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +159,9 @@
 		2DFDF56F1D2CB5E300A1F015 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		2DFDF5701D2CB5E300A1F015 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		2DFDF5711D2CB5E300A1F015 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		39E60D67A49B90CF953BB1F1 /* Pods_CelebritySentimentUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CelebritySentimentUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B1517847E6A67DA59C93676 /* Pods_CelebritySentimentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CelebritySentimentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDF369A795BACC5291606F08 /* Pods_CelebritySentiment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CelebritySentiment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +183,7 @@
 				2DFDF5731D2CB5E300A1F015 /* Fabric.framework in Frameworks */,
 				2DFDF57C1D2CB5E300A1F015 /* TwitterCore.framework in Frameworks */,
 				2DFDF5761D2CB5E300A1F015 /* TwitterKit.framework in Frameworks */,
+				5DFC3F0A025911B56F7A2EB8 /* Pods_CelebritySentimentTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +194,7 @@
 				2DFDF5741D2CB5E300A1F015 /* Fabric.framework in Frameworks */,
 				2DFDF57D1D2CB5E300A1F015 /* TwitterCore.framework in Frameworks */,
 				2DFDF5771D2CB5E300A1F015 /* TwitterKit.framework in Frameworks */,
+				1846E70E1BC3B7C220A64D4A /* Pods_CelebritySentimentUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +237,7 @@
 				2DFDF56F1D2CB5E300A1F015 /* TwitterKit.framework */,
 				2DFDF5701D2CB5E300A1F015 /* TwitterKitResources.bundle */,
 				2DFDF5711D2CB5E300A1F015 /* TwitterCore.framework */,
+				5C8CE740A71CE02334F93943 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -287,6 +295,16 @@
 				2DA9985D1D31A53800C2D289 /* Alamofire.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5C8CE740A71CE02334F93943 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDF369A795BACC5291606F08 /* Pods_CelebritySentiment.framework */,
+				3B1517847E6A67DA59C93676 /* Pods_CelebritySentimentTests.framework */,
+				39E60D67A49B90CF953BB1F1 /* Pods_CelebritySentimentUITests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

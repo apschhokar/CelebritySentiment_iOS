@@ -20,10 +20,14 @@ class CelebrityCollectionViewController: UIViewController , UICollectionViewDele
     let player3 = "Draymond Green"
 
     let userSearch =   "https://api.twitter.com/1.1/users/search.json"
-    let twitterStreamAPI = "https://stream.twitter.com/1.1/statuses/sample.json"
+    let twitterStreamAPI = "https://api.twitter.com/1.1/search/tweets.json"
     
     var values = [String]()
     var celebrityImageUrl = Dictionary<String, String>()
+    var celebrityTweetCount = Dictionary<String, Float>()
+
+    
+
 
 
 
@@ -34,19 +38,20 @@ class CelebrityCollectionViewController: UIViewController , UICollectionViewDele
         values.append(player2)
         values.append(player3)
 
-    
         
         collectionView.delegate = self
         collectionView.dataSource = self
     }
     
     
+    
+    
+    
+    
 
     //downlaod the tweets of entities saved in core data
     override func viewDidAppear(animated: Bool) {
-        
        // getURLOfImagesFromWiki("Stephen+Curry")
-        
     }
     
     
@@ -57,7 +62,6 @@ class CelebrityCollectionViewController: UIViewController , UICollectionViewDele
     }
 
 
-    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(values.count)
@@ -91,6 +95,19 @@ class CelebrityCollectionViewController: UIViewController , UICollectionViewDele
             }
         }
         
+        
+       var celebrityTweets = celebrityTweetCount[values[indexPath.row]]
+        
+        
+        if(celebrityTweets == nil){
+          //self.getTweetsStream(values[indexPath.row])
+        }
+        
+        if(celebrityTweets != nil){
+            cell.tweetsProgressBar.setProgress(celebrityTweets!, animated: true)
+        }
+        
+        
         return cell
     
     }
@@ -100,8 +117,8 @@ class CelebrityCollectionViewController: UIViewController , UICollectionViewDele
 
     //get image url of celebrity image
     func getImageURL(celebrity :String){
-    
         let client = TWTRAPIClient()
+    
         let statusesShowEndpoint = userSearch
         let params = ["q": celebrity,
                       "page" : "1",
@@ -163,7 +180,7 @@ class CelebrityCollectionViewController: UIViewController , UICollectionViewDele
     
     
     
-    func getURLOfImagesFromWiki(celebrityName : String) -> String {
+    func getURLOfImagesFromWiki(celebrityName : String)  {
         
         let parameters = [
             "action": "query",
@@ -191,22 +208,32 @@ class CelebrityCollectionViewController: UIViewController , UICollectionViewDele
                 }
         }
         
-        return ""
     }
     
     
     
     func getTweetsStream(celebrity :String){
+        
+        var user = ""
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let name = defaults.stringForKey("userID") {
+            user = name
+        }
+        
+        print("user id was \(user)")
+        
+        let client = TWTRAPIClient(userID: user)
 
-        let client = TWTRAPIClient()
+
         let statusesShowEndpoint = twitterStreamAPI
         let params = ["q": celebrity,
-                      "page" : "1",
-                      "count" : "1"
-        ]
+                      "count":"2"]
+        
         var clientError : NSError?
         
         let request = client.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        var tweetCount: Float = 0
         
         client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
             if connectionError != nil {
@@ -217,15 +244,13 @@ class CelebrityCollectionViewController: UIViewController , UICollectionViewDele
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
                 print("json: \(json)")
                 
-                let profileImageURL: String? = json[0].valueForKey("profile_image_url_https") as? String
+                print(json)
                 
-                //modify the image url to get originial size image
-                let imageURL =  self.cropTheUrlOfImage(profileImageURL!)
+                tweetCount+=0.1
                 
-                self.celebrityImageUrl[celebrity] = imageURL
-                
-                //refresh collectionView after receiving the imageURL
+                self.celebrityTweetCount[celebrity] = tweetCount
                 self.collectionView.reloadData()
+
                 
             } catch let jsonError as NSError {
                 print("json error: \(jsonError.localizedDescription)")

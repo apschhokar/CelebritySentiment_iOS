@@ -23,10 +23,16 @@ class Login: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:
                     { action in
                         switch action.style{
+                            
+                     //save userID so that it can be used later for twitter stream api
                         case .Default:
+                            print("userID is\(session?.userID)")
+                            let defaults = NSUserDefaults.standardUserDefaults()
+                            defaults.setObject(session?.userID, forKey: "userID")
                             self.performSegueWithIdentifier("showGroup", sender: self)
                             print("default")
                             
+                      // cancel case
                         case .Cancel:
                             print("cancel")
                             

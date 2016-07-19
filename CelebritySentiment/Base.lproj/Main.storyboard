@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UkZ-v3-J54">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -27,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="1282" y="297"/>
         </scene>
-        <!--Enter Group View Controller-->
+        <!--Add Celebrity Group-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="EnterGroupViewController" customModule="CelebritySentiment" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,74 +35,46 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Group Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uoh-eF-NVL">
-                                <rect key="frame" x="211" y="285" width="179" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ZwF-1c-tFJ"/>
-                                    <constraint firstAttribute="width" constant="179" id="yCv-s6-fpS"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your Celebrity Group Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bb-IB-jha">
+                                <rect key="frame" x="12" y="125" width="329" height="96"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Groups Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CXl-jk-UwY">
+                                <rect key="frame" x="98" y="254" width="179" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10j-Vu-WzK">
-                                <rect key="frame" x="217" y="370" width="167" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10j-Vu-WzK">
+                                <rect key="frame" x="142" y="334" width="90" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="167" id="Uau-GP-HNc"/>
-                                    <constraint firstAttribute="height" constant="39" id="lMf-vb-rMj"/>
-                                </constraints>
-                                <state key="normal" title="Proceed">
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <state key="normal" title="+">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onProceedBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cMv-7s-Fbd"/>
-                                    <segue destination="QHl-KT-Zol" kind="show" identifier="listGroup" id="tSD-Wm-WdC"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Celebrity Group Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bb-IB-jha">
-                                <rect key="frame" x="111" y="94" width="378" height="103"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="378" id="6lS-0T-duC"/>
-                                    <constraint firstAttribute="height" constant="103" id="wmY-iS-apX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Groups Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CXl-jk-UwY">
-                                <rect key="frame" x="211" y="220" width="179" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="D62-0X-j59"/>
-                                    <constraint firstAttribute="width" constant="179" id="wDu-vT-Pev"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.67450980392156867" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="Uoh-eF-NVL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0hE-yP-17d"/>
-                            <constraint firstItem="10j-Vu-WzK" firstAttribute="top" secondItem="Uoh-eF-NVL" secondAttribute="bottom" constant="55" id="7Kl-pV-Mwo"/>
-                            <constraint firstItem="Uoh-eF-NVL" firstAttribute="top" secondItem="CXl-jk-UwY" secondAttribute="bottom" constant="35" id="7bm-BT-AZf"/>
-                            <constraint firstItem="CXl-jk-UwY" firstAttribute="top" secondItem="0Bb-IB-jha" secondAttribute="bottom" constant="23" id="BYK-jG-6Ug"/>
-                            <constraint firstItem="Uoh-eF-NVL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZBP-Nv-9DG"/>
-                            <constraint firstItem="10j-Vu-WzK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cZc-TB-eSJ"/>
-                            <constraint firstItem="0Bb-IB-jha" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yX6-69-CMd"/>
-                            <constraint firstItem="CXl-jk-UwY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ylU-BK-hDg"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fvW-ys-nDd"/>
+                    <navigationItem key="navigationItem" title="Add Celebrity Group" id="fvW-ys-nDd"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="groupDescTextField" destination="Uoh-eF-NVL" id="3pV-5V-Qr7"/>
                         <outlet property="groupNameTextField" destination="CXl-jk-UwY" id="3Q8-IJ-VDx"/>
+                        <outlet property="headingText" destination="0Bb-IB-jha" id="gb4-zb-a5X"/>
+                        <outlet property="proceedButton" destination="10j-Vu-WzK" id="r5X-cA-hBE"/>
+                        <segue destination="QHl-KT-Zol" kind="show" identifier="listGroup" id="k1K-7G-puV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1967" y="297"/>
+            <point key="canvasLocation" x="1966.5" y="296.5"/>
         </scene>
         <!--Groups-->
         <scene sceneID="Gih-ic-CKi">
@@ -188,7 +159,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eja-ef-IJf">
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eja-ef-IJf">
                                                     <rect key="frame" x="20" y="257" width="272" height="2"/>
                                                 </progressView>
                                             </subviews>
